@@ -4,11 +4,13 @@ const videoGrid = document.getElementById('video-grid');
 const myVideo = document.createElement('video');
 myVideo.muted = true;
 
-var peer = new Peer(undefined, {
-    path: '/peerjs',
-    host: '/',
-    port: '3030'
-});
+var peer = new Peer();
+
+// var peer = new Peer(undefined, {
+//     path: '/peerjs',
+//     host: '/',
+//     port: '3030'
+// });
 
 let myVideoStream
 
@@ -28,6 +30,7 @@ navigator.mediaDevices.getUserMedia({
     })
 
     socket.on('user-connected', (userId) => {
+        console.log(userId);
         connectToNewUser(userId, stream);
     })
 })
